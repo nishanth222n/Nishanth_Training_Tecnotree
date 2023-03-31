@@ -1,0 +1,40 @@
+
+customer:
+primary key(customer_id)
+foreign key(store_id,address_id)
+
+Relation:
+customer to store : many to one
+customer to address : many to one
+
+city:
+primary key(city_id)
+foreign key(country_id)
+
+Relation:
+city to country : many to one 
+
+address:
+primary key(address_id)
+foreign key(city_id)
+
+Relation:
+address to city : many to one
+
+store:
+primary key(store_id)
+foreign key(manager_staff_id,address_id)
+
+Relation:
+store to address : many to one
+store to staff : many to one
+
+country:
+primary key(country_id)
+
+Relation:
+
+
+
+
+

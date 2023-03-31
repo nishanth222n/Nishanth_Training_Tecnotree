@@ -1,0 +1,21 @@
+WARNING: Files from a previous installation of Chocolatey were found at 'C:\ProgramData\chocolatey'.
+WARNING: An existing Chocolatey installation was detected. Installation will not continue.
+For security reasons, this script will not overwrite existing installations.
+
+Please use choco upgrade chocolatey to handle upgrades of Chocolatey itself.
+If the existing installation is not functional or a prior installation did not complete, follow these steps:
+ - Backup the files at the path listed above so you can restore your previous installation if needed
+ - Remove the existing installation manually
+ - Rerun this installation script
+ - Reinstall any packages previously installed, if needed (refer to the lib folder in the backup)
+
+Once installation is completed, the backup folder is no longer needed and can be deleted.
+choco : The term 'choco' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:176
++ ... .DownloadString('https://chocolatey.org/install.ps1')); choco upgrade ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (choco:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Type ENTER to exit:
