@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <p>Hi,how are you?</p>
+    <button id="myButton">Red</button>
+    <button id="newButton">Blue</button>
+<script>
+    var button = document.getElementById("myButton");
+    var body=document.getElementById("body")
+    button.addEventListener("click",function(){
+    body.style.backgroundColor="Red"
+    })
+    var button1 = document.getElementById("newButton");
+    var body=document.getElementById("body")
+    button1.addEventListener("click",function(){
+    body.style.backgroundColor="Blue"
+    })
+</script>
+</body>
+</html>
