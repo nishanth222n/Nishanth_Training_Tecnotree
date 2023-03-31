@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Register:</title>
+<style>
+  body {
+    background-color:lightgreen;
+}
+ table,td,tr {
+margin:15px;
+padding:15px;
+}
+
+#button {
+  height:50px;
+  width:80px;
+  background-color:lightblue;
+  border:1px white;
+  border-radius:12px;
+}
+
+
+h4{
+  color:black;
+}
+</style>
+</head>
+
+<body>
+<table>
+<h4>Register Form:</h4>
+<tr>
+<td>Name:</td>
+<td><input type ="text" id="name" name="name">
+</tr>
+<tr>
+<td>Age:</td>
+<td><input type ="text" id="age" name="age">
+</tr>
+<tr>
+<td>Email:</td>
+<td><input type ="email" id="email" name="email">
+</tr>
+<tr>
+<td>Username:</td>
+<td><input type ="text" id="Username" name="Username">
+</tr>
+<tr>
+<td>Gender:</td>
+<td><input type ="radio" id="radio" name="radio">Male <br>
+    <input type ="radio" id="radio" name="radio">Female <br>
+</td>
+</tr>
+<tr>
+<tr>
+<td>Date:</td>
+<td><input type ="date" id="date" name="date">
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type ="password" id="Password" name="Password">
+</tr>
+<tr>
+<td>
+  <button id="myButton" onclick="print()">Submit</button>
+</td>
+<td>
+  <button id="newButton" onclick="rest()">Reset</button>
+</td>
+</tr>
+</table>
+</body>
+<script>
+  var forms=document.getElementById("form")
+  var button=document.getElementById("myButton")
+  var button1=document.getElementById("newButton")
+  var name=document.getElementById("text")
+  var age=document.getElementById("age")
+  var email=document.getElementById("email")
+  var Username=document.getElementById("Username")
+  var Password=document.getElementById("Password");
+
+  function print(){
+    alert("Name: " + name.value)
+    alert("Age: " + age.value)
+    alert("Email: " + email.value)
+    alert("Username: " + Username.value)
+    alert("Password: " + Password.value)
+
+  }
+
+  function rest(){
+    name.value=" "
+    age.value=" "
+    email.value=" "
+    Username.value=" "
+    Password.value=""
+
+  }
+</script>
+</html>

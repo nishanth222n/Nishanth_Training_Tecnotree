@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h1, h2, h3 {
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .product {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    
+    .product img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .add-to-cart {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .cart {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
+    }
+    
+    .cart.open {
+        transform: translateX(0%);
+    }
+    
+    .cart h2 {
+        margin-bottom: 10px;
+    }
+    
+    .cart-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+    
+    .checkout {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .total {
+        font-weight: bold;
+    }
+
+</style>
+</head>
+<body>
+	<h1>Shopping Cart</h1>
+	<div class="products">
+		<div class="product">
+			<img src="product1.jpg" alt="Product 1">
+			<h3>Product 1</h3>
+			<p>$10.00</p>
+			<button class="add-to-cart" data-name="Product 1" data-price="10.00">Add to Cart</button>
+		</div>
+		<div class="product">
+			<img src="product2.jpg" alt="Product 2">
+			<h3>Product 2</h3>
+			<p>$15.00</p>
+			<button class="add-to-cart" data-name="Product 2" data-price="15.00">Add to Cart</button>
+		</div>
+	</div>
+	<div class="cart">
+		<h2>Cart</h2>
+		<ul class="cart-items"></ul>
+		<p>Total: $<span class="total"></span></p>
+		<button class="checkout">Checkout</button>
+	</div>
+	<script src="script.js"></script>
+</body>
+ <script>
+    // Define global variables
+const cartButton = document.querySelector('.cart-button');
+const closeButton = document.querySelector('.close-button');
+const cart = document.querySelector('.cart');
+const cartItems = document.querySelector('.cart-items');
+const cartTotal = document.querySelector('.cart-total');
+const cartCount = document.querySelector('.cart-count');
+const products = document.querySelectorAll('.product');
+const checkoutButton = document.querySelector('.checkout-button');
+
+let cartArray = [];
+
+// Add event listeners
+cartButton.addEventListener('click', toggleCart);
+closeButton.addEventListener('click', toggleCart);
+checkoutButton.addEventListener('click', checkout);
+
+products.forEach(product => {
+  const button = product.querySelector('.add-to-cart');
+  button.addEventListener('click', addToCart);
+});
+
+// Functions
+function toggleCart() {
+  cart.classList.toggle('open');
+}
+
+function addToCart(event) {
+  const name = event.target.dataset.name;
+  const price = event.target.dataset.price;
+  const item = { name: name, price: price };
+  cartArray.push(item);
+  updateCart();
+}
+
+function updateCart() {
+  cartItems.innerHTML = '';
+  let totalCount = 0;
+  let totalCost = 0;
+  cartArray.forEach(item => {
+    const li = document.createElement('li');
+    const spanName = document.createElement('span');
+    const spanPrice = document.createElement('span');
+    spanName.textContent = item.name;
+    spanPrice.textContent = '$' + item.price;
+    li.appendChild(spanName);
+    li.appendChild(spanPrice);
+    cartItems.appendChild(li);
+    totalCount++;
+    totalCost += parseFloat(item.price);
+  });
+  cartCount.textContent = totalCount;
+  cartTotal.textContent = '$' + totalCost.toFixed(2);
+}
+
+function checkout() {
+  alert('Thank you for your purchase!');
+  cartArray = [];
+  updateCart();
+}
+
+ </script>
+</html>
